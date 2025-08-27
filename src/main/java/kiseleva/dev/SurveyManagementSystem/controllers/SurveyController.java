@@ -27,14 +27,13 @@ public class SurveyController {
         this.commentServiceImpl = commentServiceImpl;
     }
 
-//    @PreAuthorize("hasAnyRole('USER','ADMIN') or isAnonymous()")
-    @PreAuthorize("isAnonymous()")
+    @PreAuthorize("permitAll()")
     @GetMapping
     public ResponseEntity<List<GetSurveyResponseDTO>> getAllSurveys(){
         return ResponseEntity.ok(surveyServiceImpl.getAllSurveys());
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN') or isAnonymous()")
+    @PreAuthorize("permitAll()")
     @GetMapping("/{id}")
     public ResponseEntity<GetSurveyResponseDTO> getSurveyById(@PathVariable Long id){
         return ResponseEntity.ok(surveyServiceImpl.getSurveyById(id));
